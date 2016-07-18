@@ -28,13 +28,31 @@ class: center, middle
 # Angular 2 and *you*
 ### with Pam Selle, @pamasaur thewebivore.com
 
+???
+
+Making serverless awesome at IOpipe, Google Developer Expert, Philadelphia
+
 ---
 
 # What is Angular2?
 
 ---
 
-Angular 1 => 2 Timeline
+## Angular 2
+
+- [https://angular.io/](https://angular.io/)
+- *Quite* different from Angular 1
+
+---
+
+## Angular 1 => 2
+
+- [Blogged about on 3/18/2014](https://angularjs.blogspot.com/2014/03/angular-20.html)
+- Goals
+  - Faster
+  - Modular
+  - ECMAScript 6
+  - Simplify DI, templating, directives
 
 ---
 
@@ -42,20 +60,77 @@ What makes Angular2 special?
 
 ---
 
+- Build for any deployment target
 - Choose your own language
 - Web components
 
 ---
 
-# Choose your own language/target
+# Build for any deployment target
 
 ---
 
-Typescript?
+# Angular2 is not tied to the DOM
 
 ---
 
-Run "anywhere"
+![tada](images/tada.png)
+
+---
+
+![tada](images/angularjs-loves-nativescript.png)
+
+https://github.com/NativeScript/sample-ng-todomvc
+
+???
+Share code between mobile app and website
+NativeScript is an open source, cross-platform framework for mobile apps
+
+---
+
+# Choose your own language
+
+???
+While AngularJS is a JavaScript framework, Angular 2 is a “whatever compiles to JavaScript” framework. As long as what you want to write in can compile to JavaScript, you can (probably) use Angular 2.
+
+---
+
+![Docs dropdown](images/angular-docs-dropdown.png)
+
+---
+
+## TypeScript?
+
+Superset of JavaScript providing:
+
+- optional static typing
+  - interfaces
+  - enums
+  - hybrid types
+  - generics &amp; more
+
+---
+
+## TypeScript?
+
+- compile newest JS standards to run in older environments
+  - modules
+  - lambdas
+  - classes
+  - spread operator &amp; more
+
+---
+
+## TypeScript?
+
+AND JavaScript code is valid TS code!
+
+---
+
+# Do I have to use TypeScript to use Angular 2?
+
+???
+No! But I might ask: Why wouldn't you? TS is also the best documented.
 
 ---
 
@@ -63,13 +138,119 @@ Run "anywhere"
 
 ---
 
+## A web component consists of &hellip;
+
+- Markup (HTML)
+- Behavior (JS)
+- Presentation (CSS)
+
+---
+
+## Web components APIs
+
+![Web Components Logo](images/webcomponents.svg)
+
+- Custom Elements
+- HTML Imports
+- Templates
+- Shadow DOM
+
+???
+Browser vendors still need to shake things out a bit for Web Components to be implemented. As an architectural component of an client-side application, however, the Web Components approach is something to be reckoned with.
+
+---
+
+<select>
+  <option>Python</option>
+  <option>JavaScript</option>
+  <option>Porque no los dos?</option>
+</select>
+
+```html
+<select>
+  <option>Python</option>
+  <option>JavaScript</option>
+  <option>Porque no los dos?</option>
+</select>
+```
+
+---
+
+## Learn more
+
+http://webcomponents.org/
+
+---
+
+# Components in Angular 2
+
+---
+
+```javascript
+@Component({
+  selector: 'my-app',
+  template: '<p>Hello {{name}}!</p>',
+})
+
+class AppComponent {
+  name:string = 'World';
+  constructor: function () { }
+}
+```
+
+---
+
+## And in ES5 &hellip;
+
+```javascript
+var AppComponent = ng
+  .Component({
+    selector: 'my-app',
+    template: '<p>Hello {{name}}!</p>'
+  })
+  .Class({
+    name: 'World'
+    constructor: function () { }
+ });
+ ```
+
+---
+
+# What's a directive anyway?
+
+???
+In Angular 1, nearly everything to control page rendering is done with directives. There are lots of existing directives ranging from the very simple (for example, ngIf is a directive you can use to conditionally show/hide part of the page) to the complex (such as data binding with ngBind). You often create your own directives to add custom behavior to an element or simply to render a template.
+
+---
+
+```javascript
+<a *ngIf="thisIsTrue" href="foo.com">Some Link </a>
+```
+
+???
+The * makes it easy to see directives that modify the HTML layout, and helps Angular expand them into something it understands
+---
+
+# Keep directives, but they go in _components_
+
+---
+
 # Angular and Django
 
 ---
 
-http://www.django-rest-framework.org/ or Tastypie
+# Write [API] once use everywhere
 
-Write once (API) use everywhere
+---
+
+## Write an API
+
+- [Django REST](http://www.django-rest-framework.org/)
+- [Tastypie](https://django-tastypie.readthedocs.io/en/latest/)
+
+---
+
+Sample! Walk through! Link to a repo!
 
 ---
 
