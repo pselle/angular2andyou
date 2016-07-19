@@ -247,13 +247,15 @@ The * makes it easy to see directives that modify the HTML layout, and helps Ang
 ```javascript
 @Component({
   selector: 'my-app',
-  template: '<p>Hello {{name}}<span *ngIf="itIsJuly"> , DjangoCon</span>!</p>',
+  template: '<h1>Hello {{name}}<span *ngIf="itIsJuly">, DjangoCon</span>!</h1>',
 })
 
 class AppComponent {
-  name:string = 'World';
-  itIsJuly:boolean = true;
-  constructor: function () { }
+  name:string = 'World'
+  itIsJuly:boolean
+  constructor() {
+    var date = new Date()
+    this.itIsJuly = (date.getMonth() == 6 && date.getFullYear() == 2016)
 }
 ```
 
@@ -274,7 +276,33 @@ class AppComponent {
 
 ---
 
-Sample! Walk through! Link to a repo!
+## Django REST
+
+- Powerful &amp; flexible
+- Web-browsable API
+- Other awesomeness
+
+---
+
+# DaaS
+
+(dinosaurs as a service)
+
+---
+
+## Angular 2? Consume the API!
+
+```javascript
+
+
+```
+
+---
+
+## Consume the API
+
+```javascript
+```
 
 ---
 
