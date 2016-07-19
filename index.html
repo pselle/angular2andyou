@@ -18,8 +18,6 @@
       .red { color: red;}
 
       .important-bit pre code, #the-important-bit + pre code { font-size: 35px }
-
-      .remark-slide-number { font-size: 15px;}
     </style>
   </head>
   <body>
@@ -36,7 +34,7 @@ Making serverless awesome at IOpipe, Google Developer Expert, Philadelphia
 
 ---
 
-# What is Angular 2?
+# What is Angular2?
 
 ---
 
@@ -55,15 +53,12 @@ Making serverless awesome at IOpipe, Google Developer Expert, Philadelphia
   - Modular
   - ECMAScript 6
   - Simplify DI, templating, directives
-- Beta: Dec 2015
 
 ---
 
-What makes Angular 2 special?
+What makes Angular2 special?
 
 ---
-
-## Angular 2 and you
 
 - Build for any deployment target
 - Choose your own language
@@ -135,7 +130,7 @@ AND JavaScript code is valid TS code!
 # Do I have to use TypeScript to use Angular 2?
 
 ???
-No! But I might ask: Why wouldn't you? TS is also the best documented in the docs.
+No! But I might ask: Why wouldn't you? TS is also the best documented.
 
 ---
 
@@ -191,8 +186,6 @@ http://webcomponents.org/
 
 ---
 
-## TypeScript
-
 ```javascript
 @Component({
   selector: 'my-app',
@@ -201,7 +194,7 @@ http://webcomponents.org/
 
 class AppComponent {
   name:string = 'World';
-  constructor() { }
+  constructor: function () { }
 }
 ```
 
@@ -239,23 +232,6 @@ The * makes it easy to see directives that modify the HTML layout, and helps Ang
 ---
 
 # Keep directives, but they go in _components_
-
----
-
-## Component with directive
-
-```javascript
-@Component({
-  selector: 'my-app',
-  template: '<p>Hello {{name}}<span *ngIf="itIsJuly"> , DjangoCon</span>!</p>',
-})
-
-class AppComponent {
-  name:string = 'World';
-  itIsJuly:boolean = true;
-  constructor: function () { }
-}
-```
 
 ---
 
