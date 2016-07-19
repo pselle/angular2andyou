@@ -284,7 +284,7 @@ class AppComponent {
 
 ---
 
-# DaaS
+# Our API? DaaS
 
 (dinosaurs as a service)
 
@@ -293,19 +293,114 @@ class AppComponent {
 ## Angular 2? Consume the API!
 
 ```javascript
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
+import 'rxjs/add/operator/toPromise';
+
+@Injectable()
+export class DinosaurService {
+  private apiURL = 'http://localhost:8000/dinosaurs';
+
+  constructor(private http: Http) { }
+
+  getDinos() {
+    return this.http.get(this.apiURL)
+              .toPromise()
+              .then(response => response.json())
+              .catch(this.handleError);
+  }
+
+  private handleError(error: any) {
+    console.error('An error occurred', error);
+    return Promise.reject(error.message || error);
+  }
+}
 
 ```
 
 ---
+class:important-bit
 
 ## Consume the API
 
 ```javascript
+getDinos() {
+  return this.http.get(this.apiURL)
+    .toPromise()
+    .then(response => response.json())
+    .catch(this.handleError);
+}
 ```
 
 ---
 
+# Zut alors! CORS!
+
+---
+
+There's a Django package for that:
+
+https://github.com/ottoyiu/django-cors-headers
+
+---
+
+# Back to JavaScript!
+
+---
+
+## Dinosaur Component
+
+```javascript
+@Component({
+  selector: 'dinosaurs',
+  template: `<ul><li *ngFor="let dino of dinos">{{dino.species}}</li></ul>`
+})
+```
+---
+
+## Dinosaur Component
+
+```javascript
+export class DinosaurComponent implements OnInit {
+  dinos: any[];
+  error: any;
+
+  constructor(private dinosaurService: DinosaurService) { }
+
+  getDinos() {
+    this.dinosaurService
+        .getDinos()
+        .then(dinos => this.dinos = dinos)
+        .catch(error => this.error = error);
+  }
+
+  ngOnInit() {
+    this.getDinos();
+  }
+}
+```
+
+---
+
+```javascript
+constructor(private dinosaurService: DinosaurService) { }
+```
+???
+Dependency Injection in action!
+---
+
+```javascript
+ngOnInit() {
+  this.getDinos();
+}
+```
+???
+Call this OnInit so we can use it!
+
+---
+
+Example app at [https://github.com/pselle/django-rest-angular2-example](https://github.com/pselle/django-rest-angular2-example)
 
 Slides at [pselle.github.io/angular2andyou](http://pselle.github.io/angular2andyou)
 
